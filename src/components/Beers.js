@@ -25,20 +25,20 @@ class Beers extends React.Component {
     }
 
     render() {
+
         return (
             <>
                 <Header />
                 {this.state.beersList.map((beer, index) => {
                     return (
-                        <>
-                        <Link to={`/beers/${beer._id}`} style={{ textDecoration: 'none' }}>
+                        
+                        <Link key={ index } to={`/beers/${beer._id}`} style={{ textDecoration: 'none' }}>
                                 <h3>{beer.name}</h3>
                                 <img src={beer.image_url} alt="image" style={{ width: "50px" }} />
                                 <p>{beer.tagline}</p>
                                 <p>{beer.contributed_by}</p>
                         </Link>
 
-                        </>
                     )
                 })}
             </>
