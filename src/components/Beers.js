@@ -31,7 +31,7 @@ class Beers extends React.Component {
                 {this.state.beersList.map((beer, index) => {
                     return (
                         <>
-                        <Link to="/beerDetails" style={{ textDecoration: 'none' }}>
+                        <Link to={`/beers/${beer._id}`} style={{ textDecoration: 'none' }}>
                                 <h3>{beer.name}</h3>
                                 <img src={beer.image_url} alt="image" style={{ width: "50px" }} />
                                 <p>{beer.tagline}</p>
