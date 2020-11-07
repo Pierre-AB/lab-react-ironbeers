@@ -1,7 +1,8 @@
 import React from "react";
 import Header from "./Header"
 import axios from "axios"
-import BeerDetails from "./BeerDetails"
+import BeerDetails from "./BeerDetails";
+import { Link } from 'react';
 
 class Beers extends React.Component {
 
@@ -10,30 +11,34 @@ class Beers extends React.Component {
     }
 
 
-  getBeers = ()=> {
-    axios.get("https://ih-beers-api2.herokuapp.com/beers")
-    .then((response) => {
-        console.log("la réponse est :", response.data)
-        this.setState({beersList: response.data})
-    })
-    .catch(error => console.log(error))
-  } 
+    getBeers = () => {
+        axios.get("https://ih-beers-api2.herokuapp.com/beers")
+            .then((response) => {
+                console.log("la réponse est :", response.data)
+                this.setState({ beersList: response.data })
+            })
+            .catch(error => console.log(error))
+    }
 
-  componentDidMount(){
-      this.getBeers()
-    } 
+    componentDidMount() {
+        this.getBeers()
+    }
 
-    render(){
-        return(
+    render() {
+        return (
             <>
-              <Header />
-              {this.state.beersList.map((beer, index) => {
-                  return(
-                    <BeerDetails beer={beer}/>
-                  )
-              })} 
+                <Header />
+                {this.state.beersList.map((beer, index) => {
+                    return (
+                        <>
+                            <Link to={`/BeerDetails`}><h3>{beer.name}</h3>
+                                <img src={beer.image_url} alt="image" style={{ width: "50px" }} />
+                                <p>{beer.tagline}</p>
+                                <p>{beer.contributed_by}</p></Link>
 
-
+                        </>
+                    )
+                })}
             </>
         )
     }
