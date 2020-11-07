@@ -2,7 +2,7 @@ import React from "react";
 import Header from "./Header"
 import axios from "axios"
 import BeerDetails from "./BeerDetails";
-import { Link } from 'react';
+import { Link } from "react-router-dom"
 
 class Beers extends React.Component {
 
@@ -31,10 +31,12 @@ class Beers extends React.Component {
                 {this.state.beersList.map((beer, index) => {
                     return (
                         <>
-                            <Link to={`/BeerDetails`}><h3>{beer.name}</h3>
+                        <Link to="/beerDetails" style={{ textDecoration: 'none' }}>
+                                <h3>{beer.name}</h3>
                                 <img src={beer.image_url} alt="image" style={{ width: "50px" }} />
                                 <p>{beer.tagline}</p>
-                                <p>{beer.contributed_by}</p></Link>
+                                <p>{beer.contributed_by}</p>
+                        </Link>
 
                         </>
                     )
