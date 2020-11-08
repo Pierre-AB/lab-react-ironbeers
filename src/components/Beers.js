@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./Header"
 import axios from "axios"
-import BeerDetails from "./BeerDetails";
+import Beer from "./Beer";
 import { Link } from "react-router-dom"
 
 class Beers extends React.Component {

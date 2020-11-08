@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import Header from "./Header";
 
-class BeerDetails extends React.Component {
+class Beer extends React.Component {
 
     state= {
         beer: {}
@@ -10,7 +10,10 @@ class BeerDetails extends React.Component {
 
     getBeer = () => {
         const { params } = this.props.match;
-        axios.get(`https://ih-beers-api2.herokuapp.com/beers/${params.id}`)
+        const uri = params.id ? 
+        `https://ih-beers-api2.herokuapp.com/beers/${params.id}` : 
+        'https://ih-beers-api2.herokuapp.com/beers/random'
+        axios.get(uri)
         .then( response =>{
             this.setState({beer: response.data});
         })
@@ -31,11 +34,11 @@ class BeerDetails extends React.Component {
                 <p>{this.state.beer.tagline}</p>
                 <p>{this.state.beer.attenuation_level}</p> 
                 <p>{this.state.beer.description}</p> 
-                <p>{this.state.beer.contributed_by}</p> 
+                <p>{this.state.beer.contributed_by}</p>  
 
             </>
         )
     }
 }
 
-export default BeerDetails;
+export default Beer;
